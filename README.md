@@ -11,3 +11,4 @@ A simple bot for loggin events on a server
 I can create your very own bot for you! Does that sound good? If so, please have a look [here](https://www.fiverr.com/basechip/create-your-discord-bot)
 # Important
 It is important that you enter your [bottoken](https://discordapp.com/developers) in the file KEYS.py, otherwise the bot will not work.
+Attention! The bot here has no access to the emojis from the servers
