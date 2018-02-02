@@ -1,0 +1,2 @@
+TOKEN="Insert Bot Token"
+
