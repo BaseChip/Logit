@@ -18,8 +18,7 @@ global gamestatus
 # gamestatus = "!help @Logit | TheBotDev"
 # gamestatus="developing mode"
 gamestatus = "!help - V 2.0 ALPHA"
-global msgChangeLog
-msgChangeLog = "1.) send Command [send]\n2.)\n?.)Bugfixes\n\n**Version:** " + version
+
 
 
 class MyClient(discord.Client):
