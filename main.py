@@ -8,12 +8,6 @@ import json
 import time
 import asyncio
 
-# ToDo
-#	poll
-#	edit message command [done (send)]
-#	webhook [work in progress]
-#	support channel
-
 conn = sqlite3.connect("daten.db")
 cur = conn.cursor()
 
