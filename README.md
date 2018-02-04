@@ -11,4 +11,4 @@ Ein einfacher Bot um Events zu loggen.
 Ich kann dir deinen ganz eigenen Bot programmieren. Das hört sich gut an? Dann schaue doch einmal [hier](https://www.fiverr.com/basechip/create-your-discord-bot) vorbei.
 
 # WICHTIG
-Es ist sehr wichtig deinen Bot Token von [Token-Seite](https://discordapp.com/developers) in die Datei KEYS.py zu schreiben wenn du das nicht tust könnte der Bot nicht starten.
+Es ist sehr wichtig deinen Bot Token von [Token-Seite](https://discordapp.com/developers) in die Datei KEYS.py zu schreiben wenn du das nicht tust kann der Bot nicht starten.
