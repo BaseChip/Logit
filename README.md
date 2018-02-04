@@ -12,3 +12,6 @@ I can create your very own bot for you! Does that sound good? If so, please have
 # Important
 It is important that you enter your [bottoken](https://discordapp.com/developers) in the file KEYS.py, otherwise the bot will not work.
 Attention! The bot here has no access to the emojis from the servers
+
+#### For German
+Here is a German [version by GregTCTLK](https://github.com/GregTCLTK/Logit)
