@@ -1,2 +1,2 @@
-TOKEN="Insert Bot Token"
+TOKEN="Füge hier deinen Token ein"
 
