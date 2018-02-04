@@ -16,7 +16,6 @@ version = "2.0 ALPHA"
 
 global gamestatus
 # gamestatus = "!help @Logit | TheBotDev"
-# gamestatus="developing mode"
 gamestatus = "!help - V 2.0 ALPHA"
 
 
@@ -45,6 +44,7 @@ class MyClient(discord.Client):
 
         print("Login succesfully!\n")
         print("""================\n""")
+	# Get emojis for the Setup and for the games
         emojilist = client.get_guild(394139572260438020)
         emojilist2 = client.get_guild(398121407847989248)
         basechip = client.get_user(333220752117596160)
@@ -77,7 +77,6 @@ class MyClient(discord.Client):
                 horse = client.get_emoji(emojis.id)
             counter2 = counter2 + 1
         for emoji in emojilist.emojis:
-            # print(str(emoji.id) + " - " + emoji.name)
             if counter == 0:
                 global z10
                 z10 = client.get_emoji(emoji.id)
@@ -205,8 +204,6 @@ class MyClient(discord.Client):
                         except discord.errors.Forbidden:
                             await message.channel.send(
                                 content="Setup has been cancelled! Unfortunately I don't have the authorization to create a webhook (manage_webhooks), but this is urgently needed for this function.")
-                else:
-                    print("Der Teil wurde nicht gebraucht")
             if invoke == "replace":
                 def c(m):
                     if m.author.id == message.author.id and m.channel.id == message.channel.id:
@@ -225,16 +222,6 @@ class MyClient(discord.Client):
                 message9 = (message8).replace("n19", str(z19))
                 message10 = message9
                 await message.channel.send(content=message10)
-
-            if invoke == "testi":
-                async with aiohttp.ClientSession() as session:
-                    webhook = Webhook.from_url(
-                        'https://discordapp.com/api/webhooks/400308366779613184/KgQSKIq5bnh0NmIGch9Pj5crkpa7src_LiCnzy9o1TrUSixkHUMyJhhIMuZNm6SRh6C5',
-                        adapter=AsyncWebhookAdapter(session))
-                    await webhook.send(username='Logit',
-                                       avatar_url="https://cdn.discordapp.com/app-icons/398933329862328330/e33eff5bb64f94c2d013bc9e6de01393.png",
-                                       embed=discord.Embed(color=discord.Color.red(),
-                                                           description="Error! Couldnt start the game! I do not have the permissions for adding reactions"))
 
             # ___ ___ ___ __  __ ___ _   _ __  __ 
             # | _ \ _ \ __|  \/  |_ _| | | |  \/  |
@@ -627,9 +614,7 @@ class MyClient(discord.Client):
                     if logchannel != None:
                         gid = message.guild.id
                         auth = message.author.id
-                        embed = discord.Embed(
-                            description="to activate a function please click the number for this setting",
-                            color=0x64efff)
+                        embed = discord.Embed(description="to activate a function please click the number for this setting",color=0x64efff)
                         embed.set_author(name="Setup | Logs")
                         embed.add_field(name="member join", value="1", inline=False)
                         embed.add_field(name="member leave", value="2", inline=False)
@@ -652,8 +637,7 @@ class MyClient(discord.Client):
                         embed.add_field(name="role update", value="19", inline=False)
                         embed.set_footer(text="You could click so many nummbers as you want to activate")
 
-                        cur.execute("UPDATE server_logs SET owner=?, activated='yes', channelid=? WHERE gid=?",
-                                    (auth, logchannel, gid))
+                        cur.execute("UPDATE server_logs SET owner=?, activated='yes', channelid=? WHERE gid=?",(auth, logchannel, gid))
                         conn.commit()
 
                         msg = await message.channel.send(embed=embed)
@@ -678,21 +662,16 @@ class MyClient(discord.Client):
                             await msg.add_reaction(z18)
                             await msg.add_reaction(z19)
                         except discord.errors.Forbidden:
-                            await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                           description="Error! setup is stopped! I do not have the permissions for adding reactions"))
+                            await message.channel.send(embed=discord.Embed(color=discord.Color.red(),description="Error! setup is stopped! I do not have the permissions for adding reactions"))
                         except discord.errors.NotFound:
                             await message.channel.send(
                                 content="Sorry! something went wrong! I couldnt find my emojis. Please join https://discord.gg/HD7x2vx to get help from me")
                         except discord.errors.HTTPException:
-                            await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                           description="Error! I have a temporary issue. Please try it again or join my support server to get help https://discord.gg/HD7x2vx "))
+                            await message.channel.send(embed=discord.Embed(color=discord.Color.red(),description="Error! I have a temporary issue. Please try it again or join my support server to get help https://discord.gg/HD7x2vx "))
                     else:
-                        await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                       description="Error! setup is broken up! Your input wasnt okay it should look like this **386425937748819978**"))
+                        await message.channel.send(embed=discord.Embed(color=discord.Color.red(),description="Error! setup is broken up! Your input wasnt okay it should look like this **386425937748819978**"))
                 else:
-                    sorry = await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                           description="This command can only use administrators, sorry").set_thumbnail(
-                        url="https://thebotdev.de/assets/img/alert.png"))
+                    sorry = await message.channel.send(embed=discord.Embed(color=discord.Color.red(), description="This command can only use administrators, sorry").set_thumbnail(url="https://thebotdev.de/assets/img/alert.png"))
                     await asyncio.sleep(20)
                     await sorry.delete()
 
@@ -706,14 +685,11 @@ class MyClient(discord.Client):
                         await message.channel.send(embed=discord.Embed(color=0x64efff,
                                                                        description=prefix + "send [The Message I should send]"))
                 else:
-                    sorry = await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                           description="This command can only use administrators, sorry").set_thumbnail(
-                        url="https://thebotdev.de/assets/img/alert.png"))
+                    sorry = await message.channel.send(embed=discord.Embed(color=discord.Color.red(),description="This command can only use administrators, sorry").set_thumbnail(url="https://thebotdev.de/assets/img/alert.png"))
                     await asyncio.sleep(20)
                     await sorry.delete()
             elif invoke == "message":
-                setup = await message.channel.send(embed=discord.Embed(color=discord.Color.magenta(),
-                                                                       description="OK! The setup for creating a message is started. Please send now the color, which should have the border (green/red/magenta/blue/gold) and don't worry about this message and which ones will be written during setup I delete later:) "))
+                setup = await message.channel.send(embed=discord.Embed(color=discord.Color.magenta(), description="OK! The setup for creating a message is started. Please send now the color, which should have the border (green/red/magenta/blue/gold) and don't worry about this message and which ones will be written during setup I delete later:) "))
 
                 # time.sleep(4)
 
@@ -726,8 +702,7 @@ class MyClient(discord.Client):
 
                     if msgwaitfor.content == "green":
                         print("Color: Green")
-                        cg = await message.channel.send(embed=discord.Embed(color=discord.Color.green(),
-                                                                            description="You have chosen the color green. As an example of what the message looks like later, this message has already colored the border. So now please send me the text, which your message should have"))
+                        cg = await message.channel.send(embed=discord.Embed(color=discord.Color.green(), description="You have chosen the color green. As an example of what the message looks like later, this message has already colored the border. So now please send me the text, which your message should have"))
 
                         def checkg(m):
                             if message.content != None and m.author.id == message.author.id and m.channel.id == message.channel.id:
@@ -742,14 +717,11 @@ class MyClient(discord.Client):
                             await msgwaitfor.delete()
                             await cg.delete()
                         except:
-                            await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                           description="Oh it looks like that i have to correct myself. I said i am going to delete all messages, but it seems to be that i do not have the permissions to delete messages (manage messages)").set_thumbnail(
-                                url="https://thebotdev.de/assets/img/alert.png"))
+                            await message.channel.send(embed=discord.Embed(color=discord.Color.red(), description="Oh it looks like that i have to correct myself. I said i am going to delete all messages, but it seems to be that i do not have the permissions to delete messages (manage messages)").set_thumbnail(url="https://thebotdev.de/assets/img/alert.png"))
 
                     elif msgwaitfor.content == "red":
                         print("Color: Red")
-                        cg = await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                            description="You have chosen the color red. As an example of what the message looks like later, this message has already colored the border. So now please send me the text, which your message should have"))
+                        cg = await message.channel.send(embed=discord.Embed(color=discord.Color.red(),description="You have chosen the color red. As an example of what the message looks like later, this message has already colored the border. So now please send me the text, which your message should have"))
 
                         def checkr(m):
                             if message.content != None and m.author.id == message.author.id and m.channel.id == message.channel.id:
@@ -764,9 +736,7 @@ class MyClient(discord.Client):
                             await msgwaitfor.delete()
                             await cg.delete()
                         except:
-                            await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                           description="Oh it looks like that i have to correct myself. I said i am going to delete all messages, but it seems to be that i do not have the permissions to delete messages (manage messages)").set_thumbnail(
-                                url="https://thebotdev.de/assets/img/alert.png"))
+                            await message.channel.send(embed=discord.Embed(color=discord.Color.red(), description="Oh it looks like that i have to correct myself. I said i am going to delete all messages, but it seems to be that i do not have the permissions to delete messages (manage messages)").set_thumbnail(url="https://thebotdev.de/assets/img/alert.png"))
 
 
 
