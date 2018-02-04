@@ -16,7 +16,6 @@ version = "2.0 ALPHA"
 
 global gamestatus
 # gamestatus = "!help @Logit | TheBotDev"
-# gamestatus="developing mode"
 gamestatus = "!help - V 2.0 ALPHA"
 
 
@@ -40,8 +39,6 @@ class MyClient(discord.Client):
         cur.execute(
             "CREATE TABLE IF NOT EXISTS support (channel INTEGER, messageUser TEXT, message TEXT, server INTEGER)")
         cur.execute("CREATE TABLE IF NOT EXISTS webhook (server INTEGER, url TEXT)")
-        # cur.execute("CREATE TABLE IF NOT EXISTS levels (gid INTEGER, lvl10 INTEGER, lvl5 INTEGER, lvl10 INTEGER, lvl15 INTEGER, lvl20 INTEGER, lvl25 INTEGER, lvl30, lvl50 INTEGER, lvl100 INTEGER)")
-        # cur.execute("CREATE TABLE IF NOT EXISTS level_user (gid INTEGER, aktlvl INTEGER, aktxp INTEGER)")
 
         print("Login succesfully!\n")
         print("""================\n""")
@@ -205,8 +202,7 @@ class MyClient(discord.Client):
                         except discord.errors.Forbidden:
                             await message.channel.send(
                                 content="Setup has been cancelled! Unfortunately I don't have the authorization to create a webhook (manage_webhooks), but this is urgently needed for this function.")
-                else:
-                    print("Der Teil wurde nicht gebraucht")
+
             if invoke == "replace":
                 def c(m):
                     if m.author.id == message.author.id and m.channel.id == message.channel.id:
@@ -225,16 +221,6 @@ class MyClient(discord.Client):
                 message9 = (message8).replace("n19", str(z19))
                 message10 = message9
                 await message.channel.send(content=message10)
-
-            if invoke == "testi":
-                async with aiohttp.ClientSession() as session:
-                    webhook = Webhook.from_url(
-                        'https://discordapp.com/api/webhooks/400308366779613184/KgQSKIq5bnh0NmIGch9Pj5crkpa7src_LiCnzy9o1TrUSixkHUMyJhhIMuZNm6SRh6C5',
-                        adapter=AsyncWebhookAdapter(session))
-                    await webhook.send(username='Logit',
-                                       avatar_url="https://cdn.discordapp.com/app-icons/398933329862328330/e33eff5bb64f94c2d013bc9e6de01393.png",
-                                       embed=discord.Embed(color=discord.Color.red(),
-                                                           description="Error! Couldnt start the game! I do not have the permissions for adding reactions"))
 
             # ___ ___ ___ __  __ ___ _   _ __  __ 
             # | _ \ _ \ __|  \/  |_ _| | | |  \/  |
