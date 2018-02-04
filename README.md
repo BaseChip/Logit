@@ -5,6 +5,8 @@ Ein einfacher Bot um Events zu loggen.
 **Schritt 1**: Sei sicher du hast Git und die discord.py [rewrite api](https://gist.github.com/BaseChip/e5d4583ad5392cd9638410c25d24547e) installiert
 
 **Schritt 2:** Klone diese Repository "https://github.com/GregTCLTK/Logit"
+
+**Schritt 3:** Gehe in die main.py zur Zeile 232 und ersetze DEINE_USER_ID mit deiner User ID.
 <br>
 
 ## Dein eigener Bot?
