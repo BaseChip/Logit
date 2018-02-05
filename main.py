@@ -42,7 +42,7 @@ class MyClient(discord.Client):
         # cur.execute("CREATE TABLE IF NOT EXISTS levels (gid INTEGER, lvl10 INTEGER, lvl5 INTEGER, lvl10 INTEGER, lvl15 INTEGER, lvl20 INTEGER, lvl25 INTEGER, lvl30, lvl50 INTEGER, lvl100 INTEGER)")
         # cur.execute("CREATE TABLE IF NOT EXISTS level_user (gid INTEGER, aktlvl INTEGER, aktxp INTEGER)")
 
-        print("Login succesfully!\n")
+        print("Erfolgreich eingeloggt!\n")
         print("""================\n""")
 	# Get emojis for the Setup and for the games
         emojilist = client.get_guild(394139572260438020)
@@ -199,11 +199,11 @@ class MyClient(discord.Client):
                                 await webhook.send(username='Logit',
                                                    avatar_url="https://cdn.discordapp.com/app-icons/398933329862328330/e33eff5bb64f94c2d013bc9e6de01393.png",
                                                    embed=discord.Embed(color=discord.Color.green(),
-                                                                       description="It worked"))
+                                                                       description="Es funktioniert"))
 
                         except discord.errors.Forbidden:
                             await message.channel.send(
-                                content="Setup has been cancelled! Unfortunately I don't have the authorization to create a webhook (manage_webhooks), but this is urgently needed for this function.")
+                                content="Das Setup wurde abgebrochen! Leider habe ich nicht die Permission um einen WebHook zu erstellen (WebHooks verwalten), aber das ist sehr wichtig für diese Funktion!")
             if invoke == "replace":
                 def c(m):
                     if m.author.id == message.author.id and m.channel.id == message.channel.id:
@@ -229,13 +229,13 @@ class MyClient(discord.Client):
             # |_| |_|_\___|_|  |_|___|\___/|_|  |_|
 
             if invoke == "activate" or invoke == "premiumactivate" or invoke == "activatepremium" or invoke == "activatePremium" or invoke == "pa" or invoke == "ap":
-                if message.author.guild_permissions.administrator == True or message.author.id == 333220752117596160:
+                if message.author.guild_permissions.administrator == True or message.author.id == DEINE_USER_ID:
                     def c(m):
                         if m.author.id == message.author.id and m.channel.id == message.channel.id:
                             return m
 
                     await message.channel.send(
-                        content="Oh cool You want to activate premium? Please make sure that nobody else can read the messages in this channel, but of course you are the only one who can use your key. So now please send my your key direct under this message. You Key should be formated like this `xxxxxxxxxxxxxxxx`")
+                        content="Oh cool du möchtest Premium aktivieren? Bitte sei dir sicher das nur du und ich diesen Channel sehen können. Nun sende bitte deinen 'Key' direckt unter dieser Nachricht. Dein 'Key' sollte folgendermaßen aussehen: `xxxxxxxxxxxxxxxx`")
                     ke = await client.wait_for("message", check=c, timeout=None)
                     key = ke.content
                     try:
@@ -258,10 +258,10 @@ class MyClient(discord.Client):
 
                                         conn.commit()
                                         await message.channel.send(
-                                            content="Successful! Premium for your server has been activated :tada:, if you still have any questions or suggestions feel free to contact me. Then thank you for your purchase and enjoy the bot.")
+                                            content="Sehr Gut Premium wurde erfolgreich für diesen Server aktiviert :tada:, wenn du irgendwelche Vorschläge oder so hast kontaktiere mich bitte. Dann noch viel Spaß mit dem Bot.")
                                     else:
                                         await message.channel.send(
-                                            content="Cool that you are interested in the premium version of my bot, that you want to redeem your key twice on the same server, but it is enough once")
+                                            content="Cool dass du an einer Premium Version meines Bot's interressiert bist, und dass du deinen Key gleich 2 mal einlösen willst aber ich denke 1 mal reicht aus^^")
                                 elif str(exists) == "[(1,)]":
                                     cur.execute("UPDATE premium_user SET server=0 WHERE key=?", (int(key),))
                                     conn.commit()
@@ -274,24 +274,24 @@ class MyClient(discord.Client):
                                             (int(key), message.guild.id, message.author.guild.name, "activated"))
                                         conn.commit()
                                         await message.channel.send(
-                                            content="Successful! Premium for your server has been activated :tada:, if you still have any questions or suggestions feel free to contact me. Then thank you for your purchase and enjoy the bot.")
+                                            content="Sehr Gut Premium wurde erfolgreich für diesen Server aktiviert :tada:, wenn du irgendwelche Vorschläge oder so hast kontaktiere mich bitte. Dann noch viel Spaß mit dem Bot..")
                                     else:
                                         await message.channel.send(
-                                            content="Cool that you are interested in the premium version of my bot, that you want to redeem your key twice on the same server, but it is enough once")
+                                            content="Cool dass du an einer Premium Version meines Bot's interressiert bist, und dass du deinen Key gleich 2 mal einlösen willst aber ich denke 1 mal reicht aus^^")
                                 elif str(exists) == "[(0,)]":
                                     await message.channel.send(
-                                        content="I am very sorry but you bought a key for 1 Server and activated this key on another server.")
+                                        content="Es tut mir wirklich leid aber der Key ist berreits auf einem anderen Server aktiviert.")
                             else:
                                 await message.channel.send(
-                                    content="That is not your key! Please buy your own Key on [Patrreon](https://patreon.com/TheBotDev)")
+                                    content="Das ist nicht dein Key! Bitte kaufe dir deinen eigenen auf [Patrreon](https://patreon.com/TheBotDev)")
                         else:
-                            await message.channel.send(content="The length of your key wasn't right")
+                            await message.channel.send(content="Die Länge von deinem Key ist falsch!")
 
                     except:
                         await message.channel.send(content="Kein gültiger Key eingegeben")
                 else:
                     sorry = await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                           description="This command can only use administrators, sorry").set_thumbnail(
+                                                                           description="Diesen Command können leider nur Administartoren ausführen").set_thumbnail(
                         url="https://thebotdev.de/assets/img/alert.png"))
                     await asyncio.sleep(20)
                     await sorry.delete()
