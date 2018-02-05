@@ -4,7 +4,6 @@ import random
 import KEYS
 import sqlite3
 import aiohttp
-import json
 import time
 import asyncio
 
