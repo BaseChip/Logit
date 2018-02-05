@@ -42,6 +42,7 @@ class MyClient(discord.Client):
 
         print("Login succesfully!\n")
         print("""================\n""")
+	#Emojis for the setup and the games (if you want to run this bot write it to me and i will ad your bot to this server)
         emojilist = client.get_guild(394139572260438020)
         emojilist2 = client.get_guild(398121407847989248)
         basechip = client.get_user(333220752117596160)
@@ -74,7 +75,6 @@ class MyClient(discord.Client):
                 horse = client.get_emoji(emojis.id)
             counter2 = counter2 + 1
         for emoji in emojilist.emojis:
-            # print(str(emoji.id) + " - " + emoji.name)
             if counter == 0:
                 global z10
                 z10 = client.get_emoji(emoji.id)
@@ -422,8 +422,7 @@ class MyClient(discord.Client):
                     await message.channel.send(content="Successful new prefix is " + str(newprefix))
                 else:
                     await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                   description="This command can only use administrators, sorry").set_thumbnail(
-                        url="https://thebotdev.de/assets/img/alert.png"))
+                                                                   description="This command can only use administrators, sorry").set_thumbnail(url="https://thebotdev.de/assets/img/alert.png"))
             elif invoke == "changelog":
                 await message.channel.send(content=msgChangeLog)
             elif invoke == "info":
@@ -436,10 +435,9 @@ class MyClient(discord.Client):
                                 value="[invite](https://discordapp.com/oauth2/authorize?client_id=398933329862328330&permissions=1342663878&scope=bot)",
                                 inline=False)
                 embed.add_field(name="My Support Server:", value="https://discord.gg/HD7x2vx", inline=False)
-                embed.add_field(name="Bot Lists:",
-                                value="[DiscordBots](https://discordbots.org/bot/398933329862328330)", inline=False)
+                embed.add_field(name="Bot Lists:", value="[DiscordBots](https://discordbots.org/bot/398933329862328330)", inline=False)
                 embed.add_field(name="Version:", value=version, inline=False)
-				embed.add_field(name="GitHub", value="[This is a fork from GitHub](https://github.com/BaseChip)", inline=False)
+		embed.add_field(name="GitHub", value="[This is a fork from GitHub](https://github.com/BaseChip)", inline=False)
                 embed.add_field(name="Libary", value="discord.py rewrite api", inline=False)
                 # embed.add_field(name="", value="")
                 embed.set_footer(text="Thanks for using!")
@@ -487,11 +485,7 @@ class MyClient(discord.Client):
                 embed.add_field(name="Premium",
                                 value="➥%s**ap**\n➥%s**premium**\n➥%s**buypremium**" % (prefix, prefix, prefix))
                 await message.channel.send(embed=embed)
-
-            # Level
-            # elif invoke=="LevelSetup" or invoke=="Levelsetup" or invoke=="levelsetup":
-            #	await message.channel.send(embed=discord.Embed(color=discord.Color.green(), description="The setup for creating a levelbot is started. I could give the users a role when they reach the levels 10,15,20,25,30,50,100, now please click the numbers below to set up the role the user should get if he reach this level"))
-
+		
             # Admin stuff
             elif invoke == "leave":
                 if message.author.id == 333220752117596160 and message.author.name == "BaseChip":
@@ -1127,8 +1121,6 @@ class MyClient(discord.Client):
         gid = gugui.id
         cur.execute("SELECT owner FROM server_logs WHERE gid=?", (gid,))
         owner = cur.fetchone()[0]
-        # cur.execute("SELECT channelid FROM server_logs WHERE gid=?")
-        # chann = cur.fetchone()[0]	
         if owner == user_id:
             if emoji.id == z1.id:
                 cur.execute("UPDATE server_logs SET a1=0 WHERE gid=?", (gid,))
@@ -1240,9 +1232,6 @@ class MyClient(discord.Client):
             ch = cur.fetchone()[0]
             channel = client.get_channel(ch)
             usr = client.get_user(member.id)
-            # hype = usr.profile.hypesquad
-            # if hype==False:
-            #	shype = hype
 
             embed = discord.Embed(title="User joined the server", color=0x00ff00)
             embed.set_thumbnail(url=member.avatar_url)
@@ -1250,9 +1239,6 @@ class MyClient(discord.Client):
             embed.add_field(name="Discriminator:", value=member.discriminator, inline=True)
             embed.add_field(name="User ID:", value=member.id, inline=True)
             embed.add_field(name="created at:", value=member.created_at, inline=True)
-            # embed.add_field(name="hypesquad:", value=shype, inline=True)
-            # embed.add_field(name="nitro:", value="no", inline=True)
-            # embed.add_field(name="discord partner:", value="niemals", inline=True)
             await channel.send(embed=embed)
 
     async def on_member_remove(self, member):
@@ -1266,9 +1252,6 @@ class MyClient(discord.Client):
             ch = cur.fetchone()[0]
             channel = client.get_channel(ch)
             usr = client.get_user(member.id)
-            # hype = usr.profile.hypesquad
-            # if hype==False:
-            #	shype = hype
 
             embed = discord.Embed(title="User leaved the server", color=discord.Color.red())
             embed.set_thumbnail(url=member.avatar_url)
@@ -1276,9 +1259,6 @@ class MyClient(discord.Client):
             embed.add_field(name="Discriminator:", value=member.discriminator, inline=True)
             embed.add_field(name="User ID:", value=member.id, inline=True)
             embed.add_field(name="created at:", value=member.created_at, inline=True)
-            # embed.add_field(name="hypesquad:", value=shype, inline=True)
-            # embed.add_field(name="nitro:", value="no", inline=True)
-            # embed.add_field(name="discord partner:", value="niemals", inline=True)
             await channel.send(embed=embed)
 
     async def on_member_update(self, before, after):
@@ -1358,7 +1338,6 @@ class MyClient(discord.Client):
             ch = cur.fetchone()[0]
             channel = client.get_channel(ch)
             print(message_id)
-            # await discord.abc.Messageable.get_message(, id=message_id)
             await channel.send(embed=discord.Embed(color=discord.Color.red(), description="Message in channel " + str(
                 channelmessage.mention) + " was deleted.").set_author(name=guild.name + "| Log Deleted Message",
                                                                       icon_url=guild.icon_url))
@@ -1377,7 +1356,6 @@ class MyClient(discord.Client):
             ch = cur.fetchone()[0]
             channel = client.get_channel(ch)
             print(message_id)
-            # await discord.abc.Messageable.get_message(, id=message_id)
             await channel.send(embed=discord.Embed(color=discord.Color.red(),
                                                    description=anzahl + "x Messages in the channel " + str(
                                                        channel.mention) + " was deleted.").set_author(
