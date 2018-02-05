@@ -6,7 +6,11 @@ Ein einfacher Bot um Events zu loggen.
 
 **Schritt 2:** Klone diese Repository "https://github.com/GregTCLTK/Logit"
 
-**Schritt 3:** Gehe in die main.py zur Zeile 226 und ersetze Deine User ID mit deiner User ID.
+**Schritt 3:** Gehe in die main.py zur Zeile 47 und ersetze Deine User ID mit deiner User ID.
+
+**Schritt 4:** Gehe in die main.py zur Zeile 226 und ersetze Deine User ID mit deiner User ID.
+
+**Schritt 5:** Gehe in die main.py zur Zeile 401 und ersetze Deine User ID mit deiner User ID.
 <br>
 
 ## Dein eigener Bot?
