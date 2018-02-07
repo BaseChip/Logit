@@ -18,7 +18,6 @@ global gamestatus
 gamestatus = "!help - V 2.0 ALPHA"
 
 
-
 class MyClient(discord.Client):
     async def on_ready(self):
         game = discord.Game(name=gamestatus)
@@ -159,7 +158,6 @@ class MyClient(discord.Client):
             elif counter == 27:
                 global z50
                 z50 = client.get_emoji
-
             counter = counter + 1
 
     async def on_message(self, message):
@@ -197,7 +195,6 @@ class MyClient(discord.Client):
                                                    avatar_url="https://cdn.discordapp.com/app-icons/398933329862328330/e33eff5bb64f94c2d013bc9e6de01393.png",
                                                    embed=discord.Embed(color=discord.Color.green(),
                                                                        description="It worked"))
-
                         except discord.errors.Forbidden:
                             await message.channel.send(
                                 content="Setup has been cancelled! Unfortunately I don't have the authorization to create a webhook (manage_webhooks), but this is urgently needed for this function.")
