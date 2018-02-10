@@ -2,7 +2,7 @@
 A simple bot for loggin events on a server 
 
 ## Install
-**Step 1**: Make sure, you have git amd the [rewrite api](https://gist.github.com/BaseChip/e5d4583ad5392cd9638410c25d24547e) installed
+**Step 1**: Make sure, you have git and the [rewrite api](https://gist.github.com/BaseChip/e5d4583ad5392cd9638410c25d24547e) installed
 
 **Step 2:** Clone this repository with `git clone "https://github.com/BaseChip/Logit `
 <br>
