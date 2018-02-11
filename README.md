@@ -14,4 +14,4 @@ It is important that you enter your [bottoken](https://discordapp.com/developers
 Attention! The bot here has no access to the emojis from the servers
 
 #### For German
-Here is a German [version by GregTCTLK](https://github.com/GregTCLTK/Logit)
+Here is a German [version by GregTCTLK](https://github.com/GregTCLTK/Logit) (Its not completly ready at the moment)
