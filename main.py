@@ -535,7 +535,7 @@ class MyClient(discord.Client):
                                                             reason=reas.content + "  | Kicked by: " + reas.author.name)
                         except discord.errors.Forbidden:
                             await message.channel.send(embed=discord.Embed(color=discord.Color.red(),
-                                                                           description="Error i dont have the permissions to ban"))
+                                                                           description="Error i dont have the permissions to kick"))
                 else:
                     sorry = await message.channel.send(content="sorry this command can only use admins")
                     await asyncio.sleep(20)
