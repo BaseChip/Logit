@@ -526,7 +526,7 @@ class MyClient(discord.Client):
 
                     usr = await client.wait_for("message", check=c, timeout=None)
                     usertoban = usr.mentions[0]
-                    await message.channel.send(content="If I should ban " + str(
+                    await message.channel.send(content="If I should kick " + str(
                         usertoban.mention) + " then please send me now the reason and otherwise please send `n`")
                     reas = await client.wait_for("message", check=c, timeout=None)
                     if reas.content != "n":
