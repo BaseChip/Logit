@@ -1528,6 +1528,8 @@ class MyClient(discord.Client):
         cur.execute("DELETE FROM server_logs WHERE gid=?", (gid,))
         conn.commit()
 
-
-client = MyClient()
-client.run(KEYS.TOKEN)
+try:
+	client = MyClient()
+	client.run(KEYS.TOKEN)
+except discord.LoginFailure:
+	print("You didnt inserted your Token in KEYS.py or your Token is wrong")
