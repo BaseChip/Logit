@@ -1529,7 +1529,7 @@ class MyClient(discord.Client):
         conn.commit()
 
 try:
-	client = MyClient()
+	client = MyClient(max_messages=50000)
 	client.run(KEYS.TOKEN)
 except discord.LoginFailure:
 	print("You didnt inserted your Token in KEYS.py or your Token is wrong")
